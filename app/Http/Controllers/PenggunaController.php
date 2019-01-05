@@ -39,17 +39,43 @@ class PenggunaController extends Controller
      */
     public function store(Request $request)
     {
-          request()->validate([
+
+      request()->validate([
           'nik' => 'required',
           'nama' => 'required',
           'alamat'=> 'required',
           'nohp'=> 'required',
           'email'=> 'required',
-          'foto' => 'required',
+          'file' => 'required',
           ]);
-          Pengguna::create($request->all());
+
+      $upload = "N";
+      if($request->hasfile('file'))
+      {
+      $destination = "upload";
+      $file = $request->file('file');
+      $file->move($destination, $file->getClientOriginalName());
+      $upload = "y";
+     }
+
+    if($upload=="y"){
+         $pengguna = new pengguna;
+
+          
+
+          $pengguna->nik = $request->nik;
+          $pengguna->nama = $request->nama;
+          $pengguna->alamat = $request->alamat;
+          $pengguna->nohp = $request->nohp;
+          $pengguna->email = $request->email;
+          $pengguna->file = $file->getClientOriginalName();
+
+          $pengguna->save();
 
           $request->session()->flash('pesan','berhasil disimpan.');
+        }
+         
+          
 
            return redirect()->route('pengguna.index');
     }
@@ -62,8 +88,9 @@ class PenggunaController extends Controller
      */
     public function show(Pengguna $pengguna)
     {
-        
-        return view('pengguna.show',compact('pengguna'));
+
+    
+       return view('pengguna.show',compact('pengguna'));
     }
 
     /**
@@ -74,6 +101,7 @@ class PenggunaController extends Controller
      */
     public function edit(Pengguna $pengguna)
     {
+
         return view('pengguna.edit',compact('pengguna'));
     }
 
@@ -90,16 +118,34 @@ class PenggunaController extends Controller
           'nik'=>'required',
           'nama' => 'required',
           'alamat'=> 'required',
-          'nohp'=> 'required|max:5',
+          'nohp'=> 'required|max:11',
           'email'=> 'required',
-          'foto' => 'required',
+          'file' => 'required',
           ]);
-    
 
-          $pengguna->update($request->all());
+         $upload = "N";
+         if($request->hasfile('file'))
+         {
+         $destination = "upload";
+         $file = $request->file('file');
+        $file->move($destination, $file->getClientOriginalName());
+        $upload = "y";
+           }
+
+          if($upload=="y"){
+            $pengguna->nik = $request->nik;
+          $pengguna->nama = $request->nama;
+          $pengguna->alamat = $request->alamat;
+          $pengguna->nohp = $request->nohp;
+          $pengguna->email = $request->email;
+          $pengguna->file = $file->getClientOriginalName();
+             
+
+          $pengguna->update();
 
           $request->session()->flash('pesan','berhasil diperbaharui.');
 
+        }
           return redirect()->route('pengguna.index');
 
 

@@ -15,15 +15,12 @@ class CreatePeminjamansTable extends Migration
     {
         Schema::create('peminjamans', function (Blueprint $table) {
             $table->increments('id');
-            $table->char('nik_pengguna');
+            $table->unsignedinteger('no_member_pengguna');
             $table->unsignedInteger('id_buku');
             $table->Integer('status');
-            
             $table->timestamps();
-
-            $table->foreign('nik_pengguna')->references('nik')->on('penggunas');
+            $table->foreign('no_member_pengguna')->references('no_member')->on('penggunas');
             $table->foreign('id_buku')->references('id')->on('bukus');
-
         });
     }
 

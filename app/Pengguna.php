@@ -8,7 +8,7 @@ class Pengguna extends Model
 {
 
     protected $fillable = [
-        'nik', 'nama', 'alamat','nohp','email','foto'
+        'no_member','nik', 'nama', 'alamat','nohp','email','file'
     ];
 
     
@@ -20,5 +20,5 @@ class Pengguna extends Model
         return $this->hasMany(\App\Models\Peminjaman::class);
     }
 
-    protected $primaryKey = 'nik';
+    protected $primaryKey = 'no_member';
 }

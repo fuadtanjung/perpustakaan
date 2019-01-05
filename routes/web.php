@@ -17,8 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/pengguna', 'PostController@index')->name('pengguna');
+Route::get('/pengguna', 'PenggunaController@index')->name('pengguna');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('pengguna','PenggunaController');
+
+Route::get('/buku', 'BukuController@index')->name('buku');

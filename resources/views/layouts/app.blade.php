@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -18,7 +19,30 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
+
+    <!-- --------------------------------------------------------------------------------------------------------- -->
+
+
+<!--  <link rel="stylesheet" href="{{ URL::asset('theme/assets/css/normalize.css')}}">
+    <link rel="stylesheet" href="{{ URL::asset('theme/assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ URL::asset('theme/assets/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{ URL::asset('theme/assets/css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{ URL::asset('theme/assets/css/flag-icon.min.css')}}">
+    <link rel="stylesheet" href="{{ URL::asset('theme/assets/css/cs-skin-elastic.css')}}">
+    <link rel="stylesheet" href="{{ URL::asset('theme/assets/css/lib/datatable/dataTables.bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ URL::asset('theme/assets/css/bootstrap-select.less')}}">
+    <link rel="stylesheet" href="{{ URL::asset('theme/assets/scss/style.css')}}">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> --> 
+
+<!-- ------------------ ----------------------------------------------------------------------------------------------->
+
 </head>
+
+
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
@@ -75,6 +99,11 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+
+    
+
     </div>
 </body>
+        @yield('script')
 </html>
